@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bsq.h                                              :+:      :+:    :+:   */
+/*   file_io.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/06 18:52:58 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/06 20:13:24 by ansaccar         ###   ########.fr       */
+/*   Created: 2025/10/06 20:10:51 by ansaccar          #+#    #+#             */
+/*   Updated: 2025/10/06 20:17:55 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BSQ_H
-# define BSQ_H
+#include "bsq.h"
 
-# include <unistd.h>
-# include <fcntl.h>
-# include <stdlib.h>
-
-# define READ_BUFFER_SIZE 64000
-
-typedef struct s_map
+int	ft_open_file(const char *path)
 {
-	char			empty;
-	char			obsticle;
-	char			fill;
-	int				columns_count;
-	int				lines_count;
-	char			**grid;
-	unsigned int	**dp;
-}	t_map;
+	if (ft_strcmp(path, "-") == 0)
+		return (0);
+	return (open(path, O_RDONLY));
+}
 
-int	ft_strcmp(char *s1, char *s2);
+char	*read_whole_file(const char *path)
+{
+	ssize_t	read_size;
+	char	*file_content;
+	int		fd;
 
-#endif
+	file_content = malloc(READ_BUFFER_SIZE);
+	fd = ft_open_file(path);
+	read_size = read(fd, file_content, READ_BUFFER_SIZE);
+	return (file_content);
+}
