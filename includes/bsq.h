@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bsq.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alaurent <alaurent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 18:52:58 by ansaccar          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/10/07 14:33:42 by alaurent         ###   ########.fr       */
-=======
-/*   Updated: 2025/10/07 17:10:46 by ansaccar         ###   ########.fr       */
->>>>>>> 6bac50c (Add strlcpy)
+/*   Updated: 2025/10/07 17:13:16 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +47,6 @@ char			*read_whole_file(char *path);
 void			ft_memcpy(void *dest, void *src, size_t size);
 void			ft_bzero(void *dest, size_t size);
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
+void			solver(t_map *map);
 
 #endif

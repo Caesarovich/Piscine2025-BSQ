@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g valgrind
+CFLAGS = -Wall -Wextra -Werror
 
 TARGET = bsq
 
