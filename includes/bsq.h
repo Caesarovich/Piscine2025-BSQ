@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bsq.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alaurent <alaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 18:52:58 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/07 11:28:19 by ansaccar         ###   ########.fr       */
+/*   Updated: 2025/10/07 14:33:42 by alaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	map_print(t_map *map);
 t_map	*parse_file(char *path);
 
 void	ft_putchar(char c);
+void	solver(t_map *map);
 int		ft_strlen(char *str);
 void	ft_putstr(char *str);
 void	ft_putnbr(int nbr);

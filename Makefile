@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g valgrind
 
 TARGET = bsq
 
@@ -16,7 +16,8 @@ SRCFILES =	main.c \
 			ft_strlen.c \
 			map_parser.c \
 			map_utils.c \
-			ft_putchar.c
+			ft_putchar.c \
+			solver.c 
 
 ####
 SRCS = $(addprefix $(SRCDIR)/, $(SRCFILES))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alaurent <alaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 18:53:32 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/07 11:23:38 by ansaccar         ###   ########.fr       */
+/*   Updated: 2025/10/07 14:49:52 by alaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	main(void)
 {
 	t_map	*map;
-
+	
 	map = parse_file("map.txt");
+	solver(map);
 	map_print(map);
 }
