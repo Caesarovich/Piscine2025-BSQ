@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/06 18:53:32 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/07 11:23:38 by ansaccar         ###   ########.fr       */
+/*   Created: 2025/10/07 09:40:19 by ansaccar          #+#    #+#             */
+/*   Updated: 2025/10/07 09:40:29 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-int	main(void)
+void	ft_putstr(char *str)
 {
-	t_map	*map;
-
-	map = parse_file("map.txt");
-	map_print(map);
+	write(1, str, ft_strlen(str));
 }

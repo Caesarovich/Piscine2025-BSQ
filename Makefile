@@ -6,7 +6,17 @@ TARGET = bsq
 INCLUDES = -Iincludes
 
 SRCDIR = srcs
-SRCFILES =	main.c 
+SRCFILES =	main.c \
+			file_io.c \
+			ft_atoi.c \
+			ft_mem.c \
+			ft_putnbr.c \
+			ft_putstr.c \
+			ft_strcmp.c \
+			ft_strlen.c \
+			map_parser.c \
+			map_utils.c \
+			ft_putchar.c
 
 ####
 SRCS = $(addprefix $(SRCDIR)/, $(SRCFILES))

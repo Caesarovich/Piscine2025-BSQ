@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/06 18:53:32 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/07 11:23:38 by ansaccar         ###   ########.fr       */
+/*   Created: 2025/10/07 09:40:51 by ansaccar          #+#    #+#             */
+/*   Updated: 2025/10/07 09:40:56 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bsq.h"
-
-int	main(void)
+int	ft_strlen(char *str)
 {
-	t_map	*map;
+	int	len;
 
-	map = parse_file("map.txt");
-	map_print(map);
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }

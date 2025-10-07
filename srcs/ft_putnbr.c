@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/06 18:53:32 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/07 11:23:38 by ansaccar         ###   ########.fr       */
+/*   Created: 2025/10/07 11:19:55 by ansaccar          #+#    #+#             */
+/*   Updated: 2025/10/07 11:28:05 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-int	main(void)
+void	ft_putnbr(int nbr)
 {
-	t_map	*map;
+	long	n;
 
-	map = parse_file("map.txt");
-	map_print(map);
+	n = nbr;
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n = -n;
+	}
+	if (n >= 10)
+	{
+		ft_putnbr(n / 10);
+	}
+	ft_putchar(n % 10 + '0');
 }

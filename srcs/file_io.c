@@ -6,20 +6,20 @@
 /*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:10:51 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/06 20:17:55 by ansaccar         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:25:48 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-int	ft_open_file(const char *path)
+int	ft_open_file(char *path)
 {
 	if (ft_strcmp(path, "-") == 0)
 		return (0);
 	return (open(path, O_RDONLY));
 }
 
-char	*read_whole_file(const char *path)
+char	*read_whole_file(char *path)
 {
 	ssize_t	read_size;
 	char	*file_content;
