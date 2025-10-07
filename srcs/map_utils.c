@@ -6,7 +6,7 @@
 /*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 09:15:59 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/07 11:44:42 by ansaccar         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:48:32 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,24 @@ t_map	*create_map(unsigned int w, unsigned int h)
 	return (map);
 }
 
+void	print_int_tab(unsigned int **tab, size_t w, size_t h)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (i < h)
+	{
+		j = 0;
+		while (j < w)
+		{
+			ft_putnbr(tab[i][j]);
+			j++;
+		}
+		i++;
+		ft_putchar('\n');
+	}
+}
 
 void	map_print(t_map *map)
 {
@@ -108,5 +126,7 @@ void	map_print(t_map *map)
 		ft_putstr(map->grid[i]);
 		ft_putchar('\n');
 	}
+	ft_putstr(">>>>> DYNAMIC\n");
+	print_int_tab(map->dp, map->width, map->heigth);
 	ft_putstr("\n-------------\n");
 }
