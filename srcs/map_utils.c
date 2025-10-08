@@ -6,7 +6,7 @@
 /*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 09:15:59 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/07 11:48:32 by ansaccar         ###   ########.fr       */
+/*   Updated: 2025/10/08 16:13:25 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,6 @@ void	map_print(t_map *map)
 {
 	size_t	i;
 
-	if (!map)
-		return (ft_putstr("No Map :(\n"));
 	ft_putstr("---- MAP ----\n");
 	ft_putstr("Size: ");
 	ft_putnbr(map->width);

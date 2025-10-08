@@ -6,7 +6,7 @@
 /*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:19:03 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/08 15:09:09 by ansaccar         ###   ########.fr       */
+/*   Updated: 2025/10/08 16:18:53 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	parse_header(char *file_content, t_map *map)
 	if (!ft_char_is_printable(map->obsticle) || map->obsticle == map->empty)
 		return (0);
 	map->fill = file_content[i++];
-	if (!ft_char_is_printable(map->fill) || map->fill == map->empty || map->fill == map->obsticle)
+	if (!ft_char_is_printable(map->fill)
+		|| map->fill == map->empty || map->fill == map->obsticle)
 		return (0);
 	if (file_content[i] != '\n')
 		return (0);
@@ -57,8 +58,6 @@ int	parse_line(t_map *map, char *line, size_t line_n)
 	return (1);
 }
 
-
-
 int	parse_grid(char *file_content, t_map *map)
 {
 	size_t	offset;
@@ -75,8 +74,8 @@ int	parse_grid(char *file_content, t_map *map)
 			return (0);
 		j++;
 	}
-	// if (file_content[offset + (j * map->width)] != '\0')
-	// 	return (0);
+	if (file_content[offset + (j * map->width)] != '\0')
+		return (0);
 	return (1);
 }
 
@@ -125,22 +124,13 @@ t_map	*parse_file(char *path)
 		return (NULL);
 	}
 	map = create_map(width, height);
-	if (!map)
+	if (!map || !parse_header(file_content, map)
+		|| !parse_grid(file_content, map))
 	{
-		free(file_content);
-		return (NULL);
+		if (map)
+			free(map);
+		map = NULL;
 	}
-	if (!parse_header(file_content, map))
-	{
-		free(file_content);
-		free(map);
-		return (NULL);
-	}
-	if (!parse_grid(file_content, map))
-	{
-		free(file_content);
-		free(map);
-		return (NULL);
-	}
+	free(file_content);
 	return (map);
 }
