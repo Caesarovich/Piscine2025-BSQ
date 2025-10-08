@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dp_grid.c                                          :+:      :+:    :+:   */
+/*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alaurent <alaurent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 11:52:25 by alaurent          #+#    #+#             */
-/*   Updated: 2025/10/07 14:53:04 by alaurent         ###   ########.fr       */
+/*   Updated: 2025/10/08 15:19:50 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,21 @@ void	solver(t_map *map)
 
 	y = 0;
 	max_side = 0;
-	while (y < map->heigth - 1)
+	while (y < map->heigth)
 	{
 		x = 0;
-		while (x < map->width - 1)
+		while (x < map->width)
 		{
 			if (map->grid[y][x] != map->obsticle)
 			{
 				if (x == 0 || y == 0)
 					map->dp[y][x] = 1;
-				map->dp[y][x] = ft_min(ft_min(map->dp[y - 1][x], map->dp[y][x - 1]),
-					map->dp[y - 1][x - 1]) + 1;
+				else
+					map->dp[y][x] = ft_min(ft_min(map->dp[y - 1][x], map->dp[y][x - 1]),
+						map->dp[y - 1][x - 1]) + 1;
 				max_side = ft_max(max_side, map->dp[y][x]);
-				x++;
 			}
+			x++;
 		}
 		y++;
 	}

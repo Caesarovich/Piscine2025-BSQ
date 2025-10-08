@@ -17,7 +17,8 @@ SRCFILES =	main.c \
 			map_parser.c \
 			map_utils.c \
 			ft_putchar.c \
-			solver.c 
+			solver.c \
+			ft_strlcpy.c
 
 ####
 SRCS = $(addprefix $(SRCDIR)/, $(SRCFILES))
@@ -56,4 +57,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+debug: CFLAGS += -g
+debug: all
+
+.PHONY: all clean fclean re debug

@@ -6,7 +6,7 @@
 /*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:10:51 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/07 11:25:48 by ansaccar         ###   ########.fr       */
+/*   Updated: 2025/10/08 15:02:44 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ char	*read_whole_file(char *path)
 
 	file_content = malloc(READ_BUFFER_SIZE);
 	fd = ft_open_file(path);
+	if (fd == -1)
+	{
+		free(file_content);
+		return (NULL);
+	}
 	read_size = read(fd, file_content, READ_BUFFER_SIZE);
 	return (file_content);
 }

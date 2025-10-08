@@ -6,7 +6,7 @@
 /*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:19:03 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/07 11:44:00 by ansaccar         ###   ########.fr       */
+/*   Updated: 2025/10/08 15:09:09 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	parse_line(t_map *map, char *line, size_t line_n)
 	return (1);
 }
 
+
+
 int	parse_grid(char *file_content, t_map *map)
 {
 	size_t	offset;
@@ -78,25 +80,50 @@ int	parse_grid(char *file_content, t_map *map)
 	return (1);
 }
 
+int	get_initial_dimensions(char *file_content, size_t *width, size_t *height)
+{
+	char	first_line[32];
+	int		w;
+	int		h;
+	size_t	i;
+
+	ft_strlcpy(first_line, file_content, 32);
+	i = 0;
+	while (first_line[i] && first_line[i] != '\n')
+		i++;
+	w = i + 1;
+	if (i < 3)
+		return (0);
+	i -= 3;
+	first_line[i] = '\0';
+	h = ft_atoi(first_line);
+	if (h < 1)
+		return (0);
+	*height = h;
+	i = 0;
+	while (file_content[i + w] && file_content[i + w] != '\n')
+		i++;
+	if (i < 1)
+		return (0);
+	*width = i;
+	return (1);
+}
+
 t_map	*parse_file(char *path)
 {
-	t_map			*map;
-	char			*file_content;
-	unsigned int	width;
-	unsigned int	height;
-	int				i;
+	t_map	*map;
+	char	*file_content;
+	size_t	width;
+	size_t	height;
 
 	file_content = read_whole_file(path);
 	if (!file_content)
 		return (NULL);
-	height = ft_atoi(file_content);
-	i = 0;
-	while (file_content[i] && file_content[i] != '\n')
-		i++;
-	i++;
-	width = 0;
-	while (file_content[i + width] && file_content[i + width] != '\n')
-		width++;
+	if (!get_initial_dimensions(file_content, &width, &height))
+	{
+		free(file_content);
+		return (NULL);
+	}
 	map = create_map(width, height);
 	if (!map)
 	{
@@ -105,14 +132,12 @@ t_map	*parse_file(char *path)
 	}
 	if (!parse_header(file_content, map))
 	{
-		printf("CANT PARSE HEADER");
 		free(file_content);
 		free(map);
 		return (NULL);
 	}
 	if (!parse_grid(file_content, map))
 	{
-		printf("CANT PARSE GRID");
 		free(file_content);
 		free(map);
 		return (NULL);
