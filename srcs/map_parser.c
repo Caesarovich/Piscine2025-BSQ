@@ -6,7 +6,7 @@
 /*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:19:03 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/08 16:57:30 by ansaccar         ###   ########.fr       */
+/*   Updated: 2025/10/08 17:41:22 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	parse_line(t_map *map, char *line, size_t line_n)
 		if (c != map->empty && c != map->fill && c != map->obsticle)
 			return (0);
 		map->grid[line_n][i] = c;
-		map->dp[line_n][i] = 0;
 		i++;
 	}
 	if (line[i] != '\n')

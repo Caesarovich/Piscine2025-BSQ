@@ -6,7 +6,7 @@
 /*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 18:52:58 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/08 15:23:57 by ansaccar         ###   ########.fr       */
+/*   Updated: 2025/10/08 17:37:06 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ typedef struct s_map
 t_map			*create_map(unsigned int w, unsigned int h);
 void			map_print(t_map *map);
 t_map			*parse_file(char *path);
+void			map_free(t_map *map);
+
+typedef struct s_file_queue
+{
+	size_t	len;
+	char	**files;
+}	t_file_queue;
 
 void			ft_putchar(char c);
 int				ft_strlen(char *str);
@@ -46,6 +53,7 @@ int				ft_atoi(char *str);
 char			*read_whole_file(char *path);
 void			ft_memcpy(void *dest, void *src, size_t size);
 void			ft_bzero(void *dest, size_t size);
+void			*ft_calloc(size_t size);
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
 void			solver(t_map *map);
 

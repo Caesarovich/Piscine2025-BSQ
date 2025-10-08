@@ -1,48 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mem.c                                           :+:      :+:    :+:   */
+/*   map_utils2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/06 20:47:20 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/08 17:37:15 by ansaccar         ###   ########.fr       */
+/*   Created: 2025/10/07 09:15:59 by ansaccar          #+#    #+#             */
+/*   Updated: 2025/10/08 17:41:28 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-void	ft_memcpy(void *dest, void *src, size_t size)
+void	map_free(t_map *map)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < size)
-	{
-		((char *)dest)[i] = ((char *)src)[i];
-		i++;
-	}
-}
-
-void	ft_bzero(void *dest, size_t size)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < size)
-	{
-		((char *)dest)[i] = 0;
-		i++;
-	}
-}
-
-void	*ft_calloc(size_t size)
-{
-	void	*mem;
-
-	mem = malloc(size);
-	if (!mem)
-		return (NULL);
-	ft_bzero(mem, size);
-	return (mem);
+	if (map->dp)
+		free(map->dp);
+	if (map->grid)
+		free(map->grid);
+	free(map);
 }

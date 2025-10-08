@@ -6,7 +6,7 @@
 /*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:10:51 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/08 15:02:44 by ansaccar         ###   ########.fr       */
+/*   Updated: 2025/10/08 17:38:42 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ char	*read_whole_file(char *path)
 	char	*file_content;
 	int		fd;
 
-	file_content = malloc(READ_BUFFER_SIZE);
-	fd = ft_open_file(path);
+	file_content = ft_calloc(READ_BUFFER_SIZE);
+	if (path)
+		fd = ft_open_file(path);
+	else
+		fd = 0;
 	if (fd == -1)
 	{
 		free(file_content);

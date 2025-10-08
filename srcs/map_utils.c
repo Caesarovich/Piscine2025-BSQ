@@ -6,7 +6,7 @@
 /*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 09:15:59 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/08 16:13:25 by ansaccar         ###   ########.fr       */
+/*   Updated: 2025/10/08 17:37:31 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**create_grid(unsigned int w, unsigned int h)
 
 	line_size = sizeof(char) * (w + 1);
 	tab_size = sizeof(char *) * (h + 1);
-	grid = malloc(tab_size + (line_size * h));
+	grid = ft_calloc(tab_size + (line_size * h));
 	if (!grid)
 		return (NULL);
 	i = 0;
@@ -42,7 +42,7 @@ unsigned int	**create_dp(unsigned int w, unsigned int h)
 
 	line_size = sizeof(unsigned int) * (w + 1);
 	tab_size = sizeof(unsigned int *) * (h + 1);
-	dp = malloc(tab_size + (line_size * h));
+	dp = ft_calloc(tab_size + (line_size * h));
 	if (!dp)
 		return (NULL);
 	i = 0;

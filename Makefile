@@ -16,6 +16,7 @@ SRCFILES =	main.c \
 			ft_strlen.c \
 			map_parser.c \
 			map_utils.c \
+			map_utils2.c \
 			ft_putchar.c \
 			solver.c \
 			ft_strlcpy.c
