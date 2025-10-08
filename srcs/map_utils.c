@@ -6,7 +6,7 @@
 /*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 09:15:59 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/08 17:37:31 by ansaccar         ###   ########.fr       */
+/*   Updated: 2025/10/08 19:43:01 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ unsigned int	**create_dp(unsigned int w, unsigned int h)
 	size_t			line_size;
 	size_t			tab_size;
 	size_t			i;
+	unsigned int	*ptr;
 	unsigned int	**dp;
 
-	line_size = sizeof(unsigned int) * (w + 1);
+	line_size = sizeof(unsigned int) * (w);
 	tab_size = sizeof(unsigned int *) * (h + 1);
 	dp = ft_calloc(tab_size + (line_size * h));
 	if (!dp)
@@ -48,9 +49,11 @@ unsigned int	**create_dp(unsigned int w, unsigned int h)
 	i = 0;
 	while (i < h)
 	{
-		dp[i] = ((unsigned int *)dp + tab_size) + line_size * i;
+		ptr = ((void *)dp + tab_size) + line_size * i;
+		dp[i] = ptr;
 		i++;
 	}
+	dp[i] = NULL;
 	return (dp);
 }
 
@@ -121,7 +124,7 @@ void	map_print(t_map *map)
 	i = -1;
 	while (++i < map->heigth)
 	{
-		ft_putstr(map->grid[i]);
+		write(1, map->grid[i], map->width);
 		ft_putchar('\n');
 	}
 	ft_putstr(">>>>> DYNAMIC\n");

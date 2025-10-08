@@ -1,9 +1,5 @@
 CC = cc
-<<<<<<< HEAD
 CFLAGS = -Wall -Wextra -Werror
-=======
-CFLAGS = -Wall -Wextra -Werror -g 
->>>>>>> 24080d2 (change_init_solver)
 
 TARGET = bsq
 
@@ -23,7 +19,9 @@ SRCFILES =	main.c \
 			map_utils2.c \
 			ft_putchar.c \
 			solver.c \
-			ft_strlcpy.c
+			ft_strlcpy.c \
+			dynamic_strings.c \
+			ft_min_max.c
 
 ####
 SRCS = $(addprefix $(SRCDIR)/, $(SRCFILES))
@@ -64,5 +62,8 @@ re: fclean all
 
 debug: CFLAGS += -g
 debug: all
+
+sanitize: CFLAGS += -fsanitize=address -g
+sanitize: all
 
 .PHONY: all clean fclean re debug

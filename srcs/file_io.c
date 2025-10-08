@@ -6,7 +6,7 @@
 /*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:10:51 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/08 17:38:42 by ansaccar         ###   ########.fr       */
+/*   Updated: 2025/10/08 18:48:40 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,43 @@
 
 int	ft_open_file(char *path)
 {
-	if (ft_strcmp(path, "-") == 0)
+	if (path == NULL)
 		return (0);
 	return (open(path, O_RDONLY));
 }
 
+char	*read_whole_file_panic(int fd, t_dstring *dstr)
+{
+	if (fd > 0)
+		close(fd);
+	dstring_free(dstr);
+	return (NULL);
+}
+
 char	*read_whole_file(char *path)
 {
-	ssize_t	read_size;
-	char	*file_content;
-	int		fd;
+	t_dstring	*dstr;
+	ssize_t		read_size;
+	char		read_buffer[READ_BUFFER_SIZE];
+	int			fd;
+	char		*file_content;
 
-	file_content = ft_calloc(READ_BUFFER_SIZE);
-	if (path)
-		fd = ft_open_file(path);
-	else
-		fd = 0;
-	if (fd == -1)
-	{
-		free(file_content);
+	dstr = dstring_create();
+	if (!dstr)
 		return (NULL);
+	fd = ft_open_file(path);
+	if (fd == -1)
+		return (dstring_free(dstr));
+	read_size = 1;
+	while (read_size > 0)
+	{
+		read_size = read(fd, read_buffer, READ_BUFFER_SIZE);
+		if (!dstring_append(dstr, read_buffer, read_size))
+			return (read_whole_file_panic(fd, dstr));
 	}
-	read_size = read(fd, file_content, READ_BUFFER_SIZE);
+	if (fd > 0)
+		close(fd);
+	file_content = dstr->str;
+	free(dstr);
 	return (file_content);
 }

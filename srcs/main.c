@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alaurent <alaurent@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 18:53:32 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/08 17:54:52 by alaurent         ###   ########.fr       */
+/*   Updated: 2025/10/08 19:30:47 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	ft_handle_file(char *path)
 		return ;
 	}
 	init_solver(map);
-	map_print(map);
 	map_free(map);
 }
 
@@ -51,6 +50,8 @@ int	main(int argc, char **argv)
 	while (i < queue.len)
 	{
 		ft_handle_file(queue.files[i]);
+		if (queue.len > 1)
+			ft_putchar('\n');
 		i++;
 	}
 	return (EXIT_SUCCESS);

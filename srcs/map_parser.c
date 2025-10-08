@@ -6,12 +6,11 @@
 /*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:19:03 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/08 17:41:22 by ansaccar         ###   ########.fr       */
+/*   Updated: 2025/10/08 19:29:30 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
-#include <stdio.h>
 
 //TODO: Reverse order
 int	parse_header(char *file_content, t_map *map)
