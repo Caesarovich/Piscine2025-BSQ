@@ -6,7 +6,7 @@
 /*   By: alaurent <alaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 18:53:32 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/08 17:54:05 by alaurent         ###   ########.fr       */
+/*   Updated: 2025/10/08 17:54:52 by alaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_handle_file(char *path)
 		print_map_error();
 		return ;
 	}
-	solver(map);
+	init_solver(map);
 	map_print(map);
 	map_free(map);
 }

@@ -6,11 +6,7 @@
 /*   By: alaurent <alaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 18:52:58 by ansaccar          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/10/08 17:53:14 by alaurent         ###   ########.fr       */
-=======
-/*   Updated: 2025/10/08 17:47:38 by alaurent         ###   ########.fr       */
->>>>>>> 24080d2 (change_init_solver)
+/*   Updated: 2025/10/08 17:54:46 by alaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +63,6 @@ void			ft_memcpy(void *dest, void *src, size_t size);
 void			ft_bzero(void *dest, size_t size);
 void			*ft_calloc(size_t size);
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
-void			solver(t_map *map);
+void			init_solver(t_map *map);
 
 #endif
