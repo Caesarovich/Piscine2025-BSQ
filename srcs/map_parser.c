@@ -6,7 +6,7 @@
 /*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:19:03 by ansaccar          #+#    #+#             */
-/*   Updated: 2025/10/08 16:18:53 by ansaccar         ###   ########.fr       */
+/*   Updated: 2025/10/08 16:57:30 by ansaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,29 @@
 //TODO: Reverse order
 int	parse_header(char *file_content, t_map *map)
 {
+	char	first_line[32];
+	int		h;
 	size_t	i;
 
-	if (ft_atoi(file_content) == 0)
-		return (0);
+	ft_strlcpy(first_line, file_content, 32);
 	i = 0;
-	while (ft_char_is_num(file_content[i]))
+	while (first_line[i] && first_line[i] != '\n')
 		i++;
-	map->empty = file_content[i++];
-	if (!ft_char_is_printable(map->empty))
+	if (i < 4)
 		return (0);
-	map->obsticle = file_content[i++];
-	if (!ft_char_is_printable(map->obsticle) || map->obsticle == map->empty)
+	map->fill = first_line[--i];
+	if (!ft_char_is_printable(map->fill))
 		return (0);
-	map->fill = file_content[i++];
-	if (!ft_char_is_printable(map->fill)
-		|| map->fill == map->empty || map->fill == map->obsticle)
+	map->obsticle = first_line[--i];
+	if (!ft_char_is_printable(map->obsticle) || map->obsticle == map->fill)
 		return (0);
-	if (file_content[i] != '\n')
+	map->empty = first_line[--i];
+	if (!ft_char_is_printable(map->empty)
+		|| map->empty == map->fill || map->empty == map->obsticle)
+		return (0);
+	first_line[i] = '\0';
+	h = ft_atoi(first_line);
+	if (h < 1)
 		return (0);
 	return (1);
 }
@@ -74,7 +79,7 @@ int	parse_grid(char *file_content, t_map *map)
 			return (0);
 		j++;
 	}
-	if (file_content[offset + (j * map->width)] != '\0')
+	if (file_content[offset + (j * (map->width + 1)) + 1] != '\0')
 		return (0);
 	return (1);
 }
@@ -91,7 +96,7 @@ int	get_initial_dimensions(char *file_content, size_t *width, size_t *height)
 	while (first_line[i] && first_line[i] != '\n')
 		i++;
 	w = i + 1;
-	if (i < 3)
+	if (i < 4)
 		return (0);
 	i -= 3;
 	first_line[i] = '\0';
