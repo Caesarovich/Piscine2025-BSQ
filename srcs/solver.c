@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ansaccar <ansaccar@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: alaurent <alaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 11:52:25 by alaurent          #+#    #+#             */
-/*   Updated: 2025/10/08 15:19:50 by ansaccar         ###   ########.fr       */
+/*   Updated: 2025/10/08 17:51:05 by alaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
+#include <stdio.h>
 
 int	ft_min(unsigned int a, unsigned int b)
 {
@@ -26,14 +27,21 @@ int	ft_max(unsigned int a, unsigned int b)
 	return (b);
 }
 
-void	solver(t_map *map)
+void	update_max_square(t_square *square, size_t x, size_t y, size_t size)
+{
+	if (size <= square->size)
+		return ;
+	square->size = size;
+	square->x = x - size;
+	square->y = y - size;
+}
+
+void	solver(t_map *map, t_square *square)
 {
 	size_t	x;
 	size_t	y;
-	size_t		max_side;
 
 	y = 0;
-	max_side = 0;
 	while (y < map->heigth)
 	{
 		x = 0;
@@ -46,7 +54,7 @@ void	solver(t_map *map)
 				else
 					map->dp[y][x] = ft_min(ft_min(map->dp[y - 1][x], map->dp[y][x - 1]),
 						map->dp[y - 1][x - 1]) + 1;
-				max_side = ft_max(max_side, map->dp[y][x]);
+				update_max_square(&square, x,  y, map->dp[y][x]);
 			}
 			x++;
 		}
@@ -54,6 +62,18 @@ void	solver(t_map *map)
 	}
 }
 
+
+void	init_solver(t_map *map)
+{
+	t_square max_sq;
+	
+	max_sq.size = 0;
+	max_sq.x = 0;
+	max_sq.y = 0;
+	solver(map, &max_sq);
+	if (max_sq.size > 0)
+	
+}
 // def maximalSquare(matrix):
 //     if not matrix:
 //         return 0

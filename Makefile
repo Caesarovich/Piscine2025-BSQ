@@ -1,5 +1,9 @@
 CC = cc
+<<<<<<< HEAD
 CFLAGS = -Wall -Wextra -Werror
+=======
+CFLAGS = -Wall -Wextra -Werror -g 
+>>>>>>> 24080d2 (change_init_solver)
 
 TARGET = bsq
 

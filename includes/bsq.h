@@ -6,7 +6,11 @@
 /*   By: alaurent <alaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 18:52:58 by ansaccar          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/10/08 17:53:14 by alaurent         ###   ########.fr       */
+=======
+/*   Updated: 2025/10/08 17:47:38 by alaurent         ###   ########.fr       */
+>>>>>>> 24080d2 (change_init_solver)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +33,14 @@ typedef struct s_map
 	char			**grid;
 	unsigned int	**dp;
 }	t_map;
+
+typedef struct s_square
+{
+	size_t x;
+	size_t y;
+	size_t size;
+}	t_square;
+
 
 t_map			*create_map(unsigned int w, unsigned int h);
 void			map_print(t_map *map);
